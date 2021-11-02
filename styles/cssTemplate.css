@@ -1,0 +1,325 @@
+/* cyrillic-ext */
+/*@font-face {
+  font-family: 'Ubuntu';
+  src: url(../fonts/4iCs6KVjbNBYlgoKcg72j00.woff2);
+
+
+  }
+*{
+    font-family: 'Ubuntu', sans-serif;
+ }*/
+ /*
+  font-family: 'FontAwasome';
+  src:url(../fonts/fontawesome-webfont.woff);*/
+/*.fa{display:inline-block;font:normal normal normal 14px/1 FontAwesome;font-size:inherit;text-rendering:auto;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+
+.fa-navicon:before,.fa-reorder:before,.fa-bars:before{content:"\f0c9"}
+.fa-twitter:before{content:"\f099"}
+.fa-facebook-official:before{content:"\f230"}*/
+@font-face
+{
+    font-family: 'caran-font';
+    src: url('../fonts/caran-font.ttf');
+}
+*{
+    font-family: 'caran-font', sans-serif;
+}
+a {
+    text-decoration: none !important;
+}
+.boxInd{
+    height: auto;
+    width: 22%;
+}
+
+.boxIndLevel{
+    height: auto;
+    width: 10%;
+}
+
+.boxIndLight{
+    height: auto;
+    width: 22%;
+}
+
+.boxIndLightLevel{
+    height: auto;
+    width: 10%;
+}
+
+.boxTreeFix{
+    height: 150px;
+}
+
+.boxTreeAuto{
+    height: auto;
+}
+.boxWrapper{
+    word-wrap: break-word;
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 10px;
+}
+.divMiddle{
+  position: relative;
+}
+
+.linkList:link, .linkList:visited {
+    background-color: white;
+    color: black;
+    border: 2px solid #0277BD;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.linkList:hover, .linkList:active {
+    background-color: #03A9F4;
+    color: white;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*
+Caran Colors
+Azul:#009ED6
+Gris:#726152
+verde:#A4C536
+negro:#181717
+*/
+
+.caran-color-1,.caran-hover-color-1:hover{color:#fff!important;background-color:#FF5722!important}
+
+.caran-azul,.caran-hover-azul:hover{color:#fff!important;background-color:#009ED6!important}
+.caran-gris,.caran-hover-gris:hover{color:#fff!important;background-color:#726152!important}
+.caran-verde,.caran-hover-verde:hover{color:#fff!important;background-color:#A4C536!important}
+.caran-negro,.caran-hover-negro:hover{color:#fff!important;background-color:#181717!important}
+
+.caran-verde-xxh,.caran-hover-verde-xxh:hover{color:#fff!important;background-color:#2E7D32!important}
+.caran-verde-xh,.caran-hover-verde-xh:hover{color:#fff!important;background-color:#388E3C!important}
+.caran-verde-h,.caran-hover-verde-h:hover{color:#fff!important;background-color:#43A047!important}
+.caran-verde-m,.caran-hover-verde-m:hover{color:#fff!important;background-color:#4CAF50!important}
+.caran-verde-l,.caran-hover-verde-l:hover{color:#fff!important;background-color:#66BB6A!important}
+
+.caran-azul-xxh,.caran-hover-azul-xxh:hover{color:#fff!important;background-color:#283593!important}
+.caran-azul-xh,.caran-hover-azul-xh:hover{color:#fff!important;background-color:#303F9F!important}
+.caran-azul-h,.caran-hover-azul-h:hover{color:#fff!important;background-color:#3949AB!important}
+.caran-azul-m,.caran-hover-azul-m:hover{color:#fff!important;background-color:#3F51B5!important}
+.caran-azul-l,.caran-hover-azul-l:hover{color:#fff!important;background-color:#5C6BC0!important}
+
+.caran-azul-light-xxh,.caran-hover-azul-light-xxh:hover{color:#fff!important;background-color:#00838F!important}
+.caran-azul-light-xh,.caran-hover-azul-light-xh:hover{color:#fff!important;background-color:#0097A7!important}
+.caran-azul-light-h,.caran-hover-azul-light-h:hover{color:#fff!important;background-color:#00ACC1!important}
+.caran-azul-light-m,.caran-hover-azul-light-m:hover{color:#fff!important;background-color:#00BCD4!important}
+.caran-azul-light-l,.caran-hover-azul-light-l:hover{color:#fff!important;background-color:#26C6DA!important}
+
+.caran-rojo-xxh,.caran-hover-rojo-xxh:hover{color:#fff!important;background-color:#c62828!important}
+.caran-rojo-xh,.caran-hover-rojo-xh:hover{color:#fff!important;background-color:#d32f2f!important}
+.caran-rojo-h,.caran-hover-rojo-h:hover{color:#fff!important;background-color:#e53935!important}
+.caran-rojo-m,.caran-hover-rojo-m:hover{color:#fff!important;background-color:#f44336!important}
+.caran-rojo-l,.caran-hover-rojo-l:hover{color:#fff!important;background-color:#ef5350!important}
+
+.caran-amarillo-xxh,.caran-hover-amarillo-xxh:hover{color:#fff!important;background-color:#F9A825!important}
+.caran-amarillo-xh,.caran-hover-amarillo-xh:hover{color:#fff!important;background-color:#FBC02D!important}
+.caran-amarillo-h,.caran-hover-amarillo--h:hover{color:#fff!important;background-color:#FDD835!important}
+.caran-amarillo-m,.caran-hover-amarillo-m:hover{color:#fff!important;background-color:#FFEB3B!important}
+.caran-amarillo-l,.caran-hover-amarillo-l:hover{color:#fff!important;background-color:#FFEE58!important}
+
+.caran-text-amarillo-xxh,.caran-text-hover-amarillo-xxh:hover{color:#F9A825!important}
+.caran-text-amarillo-xh,.caran-text-hover-amarillo-xh:hover{color:#FBC02D!important}
+.caran-text-amarillo-h,.caran-text-hover-amarillo--h:hover{color:#FDD835!important}
+.caran-text-amarillo-m,.caran-text-hover-amarillo-m:hover{color:#FFEB3B!important}
+.caran-text-amarillo-l,.caran-text-hover-amarillo-l:hover{color:#FFEE58!important}
+
+.caran-text-azul,.caran-hover-text-azul:hover{color:#009ED6!important}
+.caran-text-gris,.caran-hover-text-gris:hover{color:#726152!important}
+.caran-text-verde,.caran-hover-text-verde:hover{color:#A4C536!important}
+.caran-text-negro,.caran-hover-text-negro:hover{color:#181717!important}
+.caran-text-naranja,.caran-hover-text-naranja:hover{color:#d35400!important}
+.caran-text-deep,.caran-hover-text-deep:hover{color:#34495e!important}
+
+.caran-verde-full,.caran-hover-verde-full:hover{color:#fff!important;background-color:#33cc33!important}
+.caran-azul-full,.caran-hover-azul-full:hover{color:#fff!important;background-color:#0066ff!important}
+.caran-amarillo-full,.caran-hover-amarillo-full:hover{color:#fff!important;background-color:#f1c40f!important}
+.caran-rojo-full,.caran-hover-rojo-full:hover{color:#fff!important;background-color:#c0392b!important}
+
+.caran-text-verde-full,.caran-text-hover-verde-full:hover{color:#33cc33!important}
+.caran-text-azul-full,.caran-text-hover-azul-full:hover{color:#0066ff!important}
+.caran-text-amarillo-full,.caran-text-hover-amarillo-full:hover{color:#f1c40f!important}
+.caran-text-rojo-full,.caran-text-hover-rojo-full:hover{color:#c0392b!important}
+
+.w3-flat-turquoise{color:#fff;background-color:#1abc9c}
+.w3-flat-emerald{color:#fff;background-color:#2ecc71}
+.w3-flat-green-sea{color:#fff;background-color:#16a085}
+.w3-flat-nephritis{color:#fff;background-color:#27ae60}
+
+.w3-flat-peter-river{color:#fff;background-color:#3498db}
+.w3-flat-belize-hole{color:#fff;background-color:#2980b9}
+
+.w3-flat-wet-asphalt{color:#fff;background-color:#34495e}
+.w3-flat-midnight-blue{color:#fff;background-color:#2c3e50}
+
+.w3-flat-amethyst{color:#fff;background-color:#9b59b6}
+.w3-flat-wisteria{color:#fff;background-color:#8e44ad}
+
+
+.w3-flat-alizarin{color:#fff;background-color:#e74c3c}
+.w3-flat-pumpkin{color:#fff;background-color:#d35400}
+.w3-flat-pomegranate{color:#fff;background-color:#c0392b}
+
+.w3-flat-orange{color:#fff;background-color:#f39c12}
+.w3-flat-sun-flower{color:#fff;background-color:#f1c40f}
+.w3-flat-carrot{color:#fff;background-color:#e67e22}
+
+.w3-flat-clouds{color:#000;background-color:#ecf0f1}
+.w3-flat-concrete{color:#fff;background-color:#95a5a6}
+.w3-flat-silver{color:#000;background-color:#bdc3c7}
+.w3-flat-asbestos{color:#fff;background-color:#7f8c8d}
+
+ul.breadcrumb {
+    padding: 12px 13px;
+    list-style: none;
+    background-color: #eee;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 12px;
+}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: black;
+    content: "/\00a0";
+}
+ul.breadcrumb li a {
+    color: #0275d8;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+.headerCaran {
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+    position: static;
+    top:0%;
+    width: 100%;
+    background-image: url('../images/logo_caran.png');
+    height: 150px;
+    
+}
+
+.footerCaran {
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:center;
+    position: relative;
+    height: 5%;
+    width: 100%;
+}
+
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 600px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltipBottom {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltipBottom .tooltiptextBottom {
+    visibility: hidden;
+    width: 300px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    right: 105%;
+}
+
+.tooltipBottom:hover .tooltiptextBottom {
+    visibility: visible;
+}

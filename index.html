@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<title>CARAN - PLEV</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="images/favicon.png">
+<link rel="stylesheet" href="styles/cssW3.css" />
+<link rel="stylesheet" href="styles/cssIndex.css" />
+<link rel="stylesheet" href="styles/cssTemplate.css" />
+<body class="caran-azul">
+<script src="scripts/jquery.min.js"></script>
+<script src="scripts/jsResources.js"></script>
+<script>
+    //var objResources = null;
+    $(document).ready(function(){
+        //objResources = new jsResources();
+        //objResources.setHTML($('#divHeader'),$('#divFooter'));
+        
+        $('#btnNew').click(function(){
+			window.location.href = 'reg.html';
+						   });
+        });
+	
+</script>
+<header class="w3-white w3-jumbo w3-center w3-container w3-padding">
+    <img src="images/logo_caran.png" class="w3-image" width="40%" height="auto" alt="CARAN Soluciones Estratégicas">
+</header>
+<br>
+<section class="w3-row w3-theme w3-padding">
+    <div class="w3-third w3-container"></div>
+    <div class="w3-third w3-container">
+        <div class="w3-card-4 w3-dark-grey">
+            <div class="w3-container w3-center">
+                <p class="w3-xxlarge">PLEV<p>
+                <img src="images/login.png" alt="Avatar">
+                <p class="w3-large">Ingresa tus credenciales</p>
+                <form action="business/bsnsIndex.php" method="post">
+                    <input class="w3-input" type="email" name="arg1" placeholder="Correo electrónico" maxlength="100" required />
+                    <br>
+                    <input class="w3-input" type="password" name="arg2" placeholder="Contraseña" maxlength="5" required />
+                    <div class="w3-section">
+                        <button type="submit" id="btnSubmit" class="w3-button w3-green">Entrar</button>
+                        <input id="btnNew" type="button" class="w3-button w3-red" value="Nuevo" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="w3-third w3-container"></div>
+</section>
+<br>
+<footer>  
+  <div id="divFooter" class="w3-container w3-padding-64 w3-center w3-opacity"></div>
+</footer>
+</body>
+</html>
