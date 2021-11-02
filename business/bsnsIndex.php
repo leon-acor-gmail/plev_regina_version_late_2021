@@ -15,7 +15,7 @@ if($str[0] == 3 || $str[0] == 1 || $str[0] == 2)//admin
 }
 else
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 
 function setSession($strEmail, $iPfl, $strName, $strPfl)

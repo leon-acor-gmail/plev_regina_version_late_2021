@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ if(!isset($_SESSION['lgn']))
         objResources = new jsResources();
         objResources.setHTML($('#divHeader'),$('#divFooter'));
         initMap();
-        
+
             $('#btnSubmit').click(function(a){
                 var b = document.getElementsByTagName('form')[0];
                 if(b.checkValidity())
@@ -36,10 +36,10 @@ if(!isset($_SESSION['lgn']))
                 }
             });
         });
-    
+
     function setJSON(arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg10)
         {
-            
+
             var jsonObject = {};
             jsonObject.arg1 = arg1;
             jsonObject.arg2 = arg2;
@@ -52,9 +52,9 @@ if(!isset($_SESSION['lgn']))
             jsonObject.arg9 = JSON.stringify(arrPos);
             jsonObject.arg10 = arg10;
             return jsonObject;
-            
+
         }
-        
+
         function initMap() {
             var jsonPos = {lat: 17.558423, lng: -99.512682};
             var map = new google.maps.Map(document.getElementById('arg9'), {
@@ -86,11 +86,11 @@ if(!isset($_SESSION['lgn']))
         var infowindow = new google.maps.InfoWindow();
         var latlngStr = input.split(',', 2);
         var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-        
+
         geocoder.geocode({'location': latlng}, function(results, status) {
           if (status === 'OK') {
             if (results[0]) {
-           
+
                 var marker = new google.maps.Marker({
                   position: latlng,
                   map: map
@@ -98,7 +98,7 @@ if(!isset($_SESSION['lgn']))
                 arrPos.push({lat:marker.getPosition().lat().toString(),lng:marker.getPosition().lng().toString(),addr:results[0].formatted_address});
                 marker.addListener('dblclick',function(){
                     arrPos.splice(arrPos.indexOf(marker.position),1);
-                    marker.setMap(null); 
+                    marker.setMap(null);
                 });
                 infowindow.setContent(results[0].formatted_address);
                 infowindow.open(map, marker);
@@ -109,7 +109,7 @@ if(!isset($_SESSION['lgn']))
             window.alert('Falla de conexión:: ' + status);
           }
         });
-       
+
       }
 
 </script>
@@ -175,7 +175,7 @@ if(!isset($_SESSION['lgn']))
     <div class="w3-quarter w3-container"></div>
     </div>
 
-<footer>  
+<footer>
   <div id="divFooter" class=" w3-row w3-container w3-padding-64 w3-center w3-opacity"></div>
 </footer>
 </section>

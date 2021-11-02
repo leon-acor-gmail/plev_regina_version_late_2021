@@ -58,7 +58,7 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'</div>'+
 		'<div class="w3-dropdown-hover w3-hide-small">'+
 		'<div class="w3-section w3-bar-item w3-hide-small w3-button caran-hover-azul">'+
-		'<i class="fas fa-chart-line fa-lg"></i> Análisis de datos'+
+		'<i class="fas fa-chart-line fa-lg"></i> Seguimiento'+
 		'</div>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-azul w3-card-4">'+
 		'<a href="../views/kardex.php?token='+token+'"  class="w3-bar-item w3-button">Ficha de avance</a>'+
@@ -70,13 +70,13 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'<i class="fas fa-chart-pie fa-lg"></i> Reportes'+
 		'</div>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-azul w3-card-4">'+
-		'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+
+		/*'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+*/
 		'<a href="../views/report.php?token='+token+'" class="w3-bar-item w3-button">Ejecutivo</a>'+
 		'</div>'+
 		'</div>'+
 		'<div class="w3-dropdown-hover w3-hide-small">'+
 		'<div class="w3-section w3-bar-item w3-hide-small w3-button caran-hover-azul">'+
-		'<i class="fas fa-star fa-lg"></i> Evaluación y seguimiento'+
+		'<i class="fas fa-star fa-lg"></i> Evaluación'+
 		'</div>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-azul w3-card-4">'+
 		'<a href="../views/evaluate.php?token='+token+'" class="w3-bar-item w3-button">Cumplimiento</a>'+
@@ -136,7 +136,7 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'</div>'+
 		'</div>'+
 		'<div class="w3-dropdown-hover">'+
-		'<button class="w3-button caran-hover-azul">Análisis de datos</button>'+
+		'<button class="w3-button caran-hover-azul">Seguimiento</button>'+
 		'<div class="w3-dropdown-content w3-bar-block w3-card-4">'+
 		'<a href="../views/kardex.php?token='+token+'" class="w3-bar-item w3-button">Ficha de avance</a>'+
 		'<a href="../views/review.php?token='+token+'" class="w3-bar-item w3-button">Revisión de información</a>'+
@@ -146,13 +146,13 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'<div class="w3-dropdown-hover">'+
 		'<button class="w3-button caran-hover-azul">Reportes</button>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-hover-azul w3-card-4">'+
-		'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+
+		/*'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+*/
 		'<a href="../views/report.php?token='+token+'" class="w3-bar-item w3-button">Ejecutivo</a>'+
 		'<!--<a class="w3-bar-item w3-button">Indicadores</a>-->'+
 		'</div>'+
 		'</div>'+
 		'<div class="w3-dropdown-hover">'+
-		'<button class="w3-button caran-hover-azul">Evaluación y seguimiento</button>'+
+		'<button class="w3-button caran-hover-azul">Evaluación</button>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-hover-azul w3-card-4">'+
 		'<a href="../views/evaluate.php?token='+token+'" class="w3-bar-item w3-button">Cumplimiento</a>'+
 		'</div>'+
@@ -174,7 +174,7 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 
 		domFooter.empty();
         items = [];
-        items.push('<div class="w3-xxlarge w3-padding-8" ><a href="https://es-la.facebook.com/CaranSolucionesEstrategicasSc/" target="_blank"><i class="fab fa-facebook w3-hover-opacity"></i></a><a href="https://www.youtube.com/channel/UCKtSk4s3jXwqnUZ3M0lhwhA" target="_blank"> <i class="fab fa-youtube w3-hover-opacity"></i> </a><a href="https://www.caransoluciones.com.mx/" target="_blank"><i class="fab fa-internet-explorer w3-hover-opacity""></i></a></div><p><a href="https://www.caransoluciones.com.mx/" target="_blank">CARAN Soluciones Estratégicas S.C.</a></p>');
+        items.push('<div class="w3-xxlarge w3-padding-8" ><a href="https://es-la.facebook.com/CaranSolucionesEstrategicasSc/" target="_blank"><i class="fab fa-facebook w3-hover-opacity"></i></a><a href="https://www.youtube.com/channel/UCKtSk4s3jXwqnUZ3M0lhwhA" target="_blank"> <i class="fab fa-youtube w3-hover-opacity"></i> </a><a href="https://caran.com.mx/" target="_blank"><i class="fab fa-internet-explorer w3-hover-opacity""></i></a></div><p><a href="https://caran.com.mx/" target="_blank">CARAN Soluciones Estratégicas S.C.</a></p>');
 		domFooter.append( items.join('') );
 
 		domBreadcrumbs.empty();

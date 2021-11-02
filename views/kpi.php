@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -24,11 +24,11 @@ if(!isset($_SESSION['lgn']))
     $(document).ready(function(){
             objResources = new jsResources();
             objResources.setHTML('<?php echo($_SESSION['spr']); ?>','<?php echo($_GET['token']); ?>','<?php echo($_SESSION['nme']); ?>',$('#divHeader'),$('#divFooter'), $('#divBreadcrumbs'), JSON.stringify([{'s':'home.php', 'n': 'inicio'},{'s':'home.php', 'n': 'gráficas'},{'s':'kpi.php', 'n': 'indicadores'}]));
-        });   
+        });
 </script>
 <header class="w3-top">
     <div id="divHeader"></div>
-    
+
 </header>
 </section>
 <section class="w3-container" style="height: 100px;"></section>

@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -28,18 +28,18 @@ if(!isset($_SESSION['lgn']))
             var span = document.getElementsByClassName("close")[0];
             var modal = document.getElementById('myModal');
             span.onclick = function() {
-                
+
                 modal.style.display = "none";
             };
             /*window.onclick = function(event) {
-                
+
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
             };*/
-            
+
             $('#SaveModule').click(function(a){
-                
+
                  var b = document.getElementsByTagName('form')[0];
                 if(b.checkValidity())
                 {
@@ -70,10 +70,10 @@ if(!isset($_SESSION['lgn']))
                         });
                     a.preventDefault();
                 }
-                
+
                 });
         });
-    
+
     function cleanFieldsInd()
     {
         $('#arg1').val(' ');
@@ -92,7 +92,7 @@ if(!isset($_SESSION['lgn']))
                        $('#arg15').val(0);
                        $('#arg11').val(' ');
     }
-    
+
     function cleanFields()
     {
         var v = document.querySelectorAll('.boxWrapper');
@@ -103,7 +103,7 @@ if(!isset($_SESSION['lgn']))
             $(w).text('');
         }
     }
-    
+
     function getDataInd(code)
     {
         cleanFields();
@@ -115,12 +115,12 @@ if(!isset($_SESSION['lgn']))
                 for(i=0; i< v.length; i++)
                 {
                     w = v[i].querySelector('[data-code]');
-                   
+
                     for(j=0; j<y.length; j++)
                     {
                         if($(w).data('code') == y[j].code+'ind')
                         {
-                            
+
                             $(w).text(y[j].indicador);
                         }
                         else if($(w).data('code') == y[j].code+'res')
@@ -139,15 +139,23 @@ if(!isset($_SESSION['lgn']))
                 }
             });
     }
-    
+
     function getProjects()
     {
         $.post('../business/bsnsTrees.php',{iC:1},function(f){
                 objResources.ComboPopulate($('#cobProj'),f);
             });
-                
+
     }
-        
+
+    function getBudget(){
+      var iBudget1 = $('#iBudget1').val();
+      var iBudget2 = $('#iBudget2').val();
+      var iBudget3 = $('#iBudget3').val();
+      var iBudgetTotal = parseInt(iBudget1) + parseInt(iBudget2) + parseInt(iBudget3);
+      $('#arg7').val(iBudgetTotal);
+    }
+
     function getInd(code)
     {
         if($('#cobProj').val() > 0)
@@ -158,7 +166,7 @@ if(!isset($_SESSION['lgn']))
                 $('#divBudget').removeClass('w3-hide');
                 $('#divBudget').addClass('w3-show');
                 //alert('act');
-                
+
             }
             else
             {
@@ -166,13 +174,13 @@ if(!isset($_SESSION['lgn']))
                 $('#divBudget').removeClass('w3-show');
                 //alert('comp');
             }
-            
+
             cleanFieldsInd();
             $.post('../business/bsnsMML.php',{iC:3, arg1: $('#cobProj').val(), arg2: code},function(f){
                     var us = JSON.parse(f);
                     if(us.length > 0)
                     {
-                        
+
                     $('#arg1').val(us[0].indicador);
                     $('#arg2').val(us[0].resumen);
                     $('#arg3').val(us[0].calculo);
@@ -189,15 +197,15 @@ if(!isset($_SESSION['lgn']))
                     $('#arg13').val(chap[0]);
                     $('#arg14').val(chap[1]);
                     $('#arg15').val(chap[2]);
-                    
+
                     }
                     var modal = document.getElementById('myModal');
                     modal.style.display = "block";
                     $('#txtCode').text(code);
                     $('#txtShowCode').text(code.toUpperCase());
                 });
-            
-            
+
+
         }
         else{
             alert('debes elegir un proyecto antes ...');
@@ -210,14 +218,14 @@ if(!isset($_SESSION['lgn']))
 <section class="w3-container" style="height: 100px;">
     <div id="myModal" class="modal">
     <div class="modal-content">
-        
+
         <div class="modal-header w3-center">
             <span class="close">&times;</span>
             <label>Construcción del indicador</label>
             <h4 id="txtCode" class="w3-hide"></h4>
             <h4 id="txtShowCode"></h4>
-            
-            
+
+
         </div>
         <div class="modal-body">
            <p class="w3-text-red"><span><strong>&#9873;</strong></span> Campos obligatorios</p>
@@ -232,7 +240,7 @@ if(!isset($_SESSION['lgn']))
                   <label for="arg1">Nombre del indicador <span class="w3-text-red"><strong>&#9873;</strong></span></label>
                   <br>
                   <br>
-                  
+
                   <textarea id="arg3" class="w3-input" cols="12" rows="2" maxlength="1000" required></textarea>
                   <label for="arg3">Método de cálculo <span class="w3-text-red"><strong>&#9873;</strong></span></label>
                   <br>
@@ -256,7 +264,7 @@ if(!isset($_SESSION['lgn']))
                   <label for="arg6">Supuestos <span class="w3-text-red"><strong>&#9873;</strong></span></label>
                   <br>
                   <br>
-                  
+
                         <select id="arg8" required class="w3-select">
                             <option value="0" disabled selected>Elige una dimensión <span class="w3-text-red"><strong>&#9873;</strong></span></option>
                             <option value="Eficiencia">Eficiencia</option>
@@ -268,50 +276,66 @@ if(!isset($_SESSION['lgn']))
                         <br>
                         <br>
                   <div id="divBudget">
-                    <input class="w3-input w3-large" type="number" id="arg7" />
+                    <input disabled class="w3-input w3-large" type="number" id="arg7" />
                     <label for="arg7">Presupuesto de la actividad <span class="w3-text-red"><strong>&#9873;</strong></span></label>
                     <br>
                     <br>
+                    <!--
+
+                      <p>I am a panel.</p>
+
+
+                  -->
+                  <div class="w3-panel">
+                    <p>Ingresa el presupuesto cada uno de los capítulos</p>
+                    <input id="iBudget1" onchange="getBudget();" type="number" value="0" style="width:100%;">
                         <select id="arg13" class="w3-select">
-                            <option value="0" disabled selected>Elige un capitulo de presupuesto <span class="w3-text-red"><strong>&#9873;</strong></span></option>
+                            <option value="0" disabled selected>Elige un capítulo de presupuesto <span class="w3-text-red"><strong>&#9873;</strong></span></option>
                             <option value="1000">1000 Servicios Personales</option>
                             <option value="2000">2000 Materiales y Suministros</option>
                             <option value="3000">3000 Servicios Generales</option>
                             <option value="4000">4000 Subsidios y Transferencias</option>
                             <option value="5000">5000 Bienes Muebles e Inmuebles</option>
                             <!--<option value="6000">6000 Obras Públicas Servicios Personales</option>
-                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option> 
+                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option>
                             <option value="8000">8000 Participaciones de ingreso, aportaciones federales, aportaciones y gasto reasignado</option>
                             <option value="9000">9000 Deuda pública, pasivo circulante y otros</option>-->
                         </select>
+                  </div>
                         <br>
                         <br>
+                        <div class="w3-panel">
+                          <input id="iBudget2" onchange="getBudget();" type="number" value="0" style="width:100%;" >
                         <select id="arg14" class="w3-select">
-                            <option value="0" disabled selected>Elige un capitulo de presupuesto <!--<span class="w3-text-red"><strong>&#9873;</strong></span>--></option>
+                            <option value="0" disabled selected>Elige un capítulo de presupuesto <!--<span class="w3-text-red"><strong>&#9873;</strong></span>--></option>
                             <option value="1000">1000 Servicios Personales</option>
-                            <option value="2000">2000 Materiales y Suministros</option>
+                            <option value="2000">2000 Materiales y Suminìstros</option>
                             <option value="3000">3000 Servicios Generales</option>
                             <option value="4000">4000 Subsidios y Transferencias</option>
                             <option value="5000">5000 Bienes Muebles e Inmuebles</option>
                             <!--<option value="6000">6000 Obras Públicas Servicios Personales</option>
-                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option> 
+                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option>
                             <option value="8000">8000 Participaciones de ingreso, aportaciones federales, aportaciones y gasto reasignado</option>
                             <option value="9000">9000 Deuda pública, pasivo circulante y otros</option>-->
                         </select>
+                        </div>
                         <br>
                         <br>
+                        <div class="w3-panel">
+                          <input id="iBudget3" onchange="getBudget();" type="number" value="0" style="width:100%;" >
                         <select id="arg15" class="w3-select">
-                            <option value="0" disabled selected>Elige un capitulo de presupuesto <!--<span class="w3-text-red"><strong>&#9873;</strong></span>--></option>
+                            <option value="0" disabled selected>Elige un capítulo de presupuesto <!--<span class="w3-text-red"><strong>&#9873;</strong></span>--></option>
                             <option value="1000">1000 Servicios Personales</option>
                             <option value="2000">2000 Materiales y Suministros</option>
                             <option value="3000">3000 Servicios Generales</option>
                             <option value="4000">4000 Subsidios y Transferencias</option>
                             <option value="5000">5000 Bienes Muebles e Inmuebles</option>
                             <!--<option value="6000">6000 Obras Públicas Servicios Personales</option>
-                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option> 
+                            <option value="7000">7000 Inversión  financiera,  provisiones  económicas,  ayudas,  otras  erogaciones y pensiones, jubilaciones y otras</option>
                             <option value="8000">8000 Participaciones de ingreso, aportaciones federales, aportaciones y gasto reasignado</option>
                             <option value="9000">9000 Deuda pública, pasivo circulante y otros</option>-->
                         </select>
+                        </div>
                         <br>
                         <br>
                         <a class="linkList" href="http://www.diputados.gob.mx/sedia/sia/se/SE-ISS-03-08_Intro.pdf" target="_blank">Capitulos de gasto en México</a>
@@ -325,7 +349,7 @@ if(!isset($_SESSION['lgn']))
                         <br>
                         <a class="linkList" href="http://www.transparenciapresupuestaria.gob.mx/es/PTP/datos_presupuestarios_abiertos" target="_blank">Datos presupuestarios abiertos</a>
                   </div>
-                  
+
                 </div>
                 <div class="w3-third w3-container">
                         <input class="w3-input w3-large" type="number" id="arg9" required />
@@ -340,7 +364,7 @@ if(!isset($_SESSION['lgn']))
                         <br>
                         <br>
                         <select id="arg12" required class="w3-select">
-                            
+
                             <option value="0" disabled selected>Elige una frec. de medición <span class="w3-text-red"><strong>&#9873;</strong></span></option>
                             <option value="Anual">Anual</option>
                             <option value="Semestre">Semestre</option>
@@ -356,20 +380,20 @@ if(!isset($_SESSION['lgn']))
              <br>
              <br>
                    <button id="SaveModule"  class="w3-button w3-indigo">Guardar...</button>
-                   
+
                    </form>
         </div>
         <br>
         <div class="modal-footer">
           <!--<button type="submit" onclick="SaveModule($('#txtCode').text());"  class="w3-button w3-indigo">Guardar...</button>-->
-          
+
         </div>
-        
+
     </div>
     </div>
 </section>
 <section class="w3-center">
-    <select id="cobProj" class="w3-select" style="width: 60%;" onchange="getDataInd(this.value);" name="option"></select> 
+    <select id="cobProj" class="w3-select" style="width: 60%;" onchange="getDataInd(this.value);" name="option"></select>
     <br>
     <br>
     <label id="lblProj" class="w3-large">Matríz de indicadores</label>
@@ -379,10 +403,10 @@ if(!isset($_SESSION['lgn']))
 <section class="divMiddle w3-container">
     <div class="w3-cell-row w3-center">
         <div  class="w3-container caran-azul-light-xxh w3-cell w3-cell-middle w3-mobile boxIndLightLevel">
-            <!--<p>Nivel</p>-->  
+            <!--<p>Nivel</p>-->
         </div>
         <div class="w3-container w3-hover-opacity caran-azul-light-xh w3-cell w3-cell-middle w3-mobile boxIndLight">
-            
+
             <p>Resumen</p>
         </div>
         <div class="w3-container w3-hover-opacity caran-azul-light-h w3-cell w3-cell-middle w3-mobile boxIndLight">
@@ -394,14 +418,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container w3-hover-opacity caran-azul-light-l w3-cell w3-cell-middle w3-mobile boxIndLight">
             <p>Supuestos</p>
         </div>
-        
+
     </div>
     <div onclick="getInd('f1i1');" class="w3-cell-row">
         <div class="w3-container caran-verde-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>Fin</p>  
+            <p>Fin</p>
         </div>
         <div class="w3-container caran-verde-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
-            <p data-code="f1i1res"></p>  
+            <p data-code="f1i1res"></p>
         </div>
         <div class="w3-container caran-verde-h w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
              <p data-code="f1i1ind"></p>
@@ -412,7 +436,7 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-verde-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="f1i1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('p1i1');" class="w3-cell-row">
         <div class="w3-container caran-azul-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
@@ -430,14 +454,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-azul-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="p1i1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c1i1');" class="w3-cell-row">
         <div class="w3-container caran-rojo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>Componente 1</p>  
+            <p>Bienes o Servicios</p>
         </div>
         <div class="w3-container caran-rojo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
-            
+
             <p data-code="c1i1res"></p>
         </div>
         <div class="w3-container caran-rojo-h w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
@@ -446,15 +470,15 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-rojo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1i1evi"></p>
         </div>
-        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">  
+        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1i1sup"></p>
         </div>
-        
-       
+
+
     </div>
     <div onclick="getInd('c2i1');" class="w3-cell-row">
         <div class="w3-container caran-rojo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>Componente 2</p>  
+            <p>Bienes o Servicios</p>
         </div>
         <div class="w3-container caran-rojo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2i1res"></p>
@@ -465,14 +489,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-rojo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2i1evi"></p>
         </div>
-        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">  
+        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2i1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c3i1');" class="w3-cell-row">
         <div class="w3-container caran-rojo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>Componente 3</p>  
+            <p>Bienes o Servicios</p>
         </div>
         <div class="w3-container caran-rojo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c3i1res"></p>
@@ -483,14 +507,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-rojo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c3i1evi"></p>
         </div>
-        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">   
+        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c3i1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c4i1');" class="w3-cell-row">
         <div class="w3-container caran-rojo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>Componente 4</p>  
+            <p>Bienes o Servicios</p>
         </div>
         <div class="w3-container caran-rojo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c4i1res"></p>
@@ -501,14 +525,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-rojo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="w3-hover-opacity" data-code="c4i1evi"></p>
         </div>
-        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">  
+        <div class="w3-container caran-rojo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="w3-hover-opacity" data-code="c4i1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c1a1');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>  
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C1A1</p><br>
@@ -520,14 +544,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1a1evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">   
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1a1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c1a2');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>C1 Actividades</p>  
+            <p>C1 Actividades</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C1A2</p><br>
@@ -539,14 +563,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1a2evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">   
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1a2sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c1a3');" class="w3-cell-row">
         <div class="w3-container  caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>   
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C1A3</p><br>
@@ -561,13 +585,13 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c1a3sup"></p>
         </div>
-        
+
     </div>
-    
-    
+
+
     <div onclick="getInd('c2a1');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>  
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C2A1</p><br>
@@ -579,14 +603,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2a1evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">               
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2a1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c2a2');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>C2 Actividades</p> 
+            <p>C2 Actividades</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C2A2</p><br>
@@ -601,11 +625,11 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c2a2sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c2a3');" class="w3-cell-row">
         <div class="w3-container  caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>   
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C2A3</p><br>
@@ -620,13 +644,13 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c2a3sup"></p>
         </div>
-        
+
     </div>
-    
-    
+
+
     <div onclick="getInd('c3a1');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>  
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C3A1</p><br>
@@ -641,11 +665,11 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c3a1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c3a2');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>C3 Actividades</p> 
+            <p>C3 Actividades</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C3A2</p><br>
@@ -660,11 +684,11 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p data-code="c3a2sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c3a3');" class="w3-cell-row">
         <div class="w3-container  caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>   
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C3A3</p><br>
@@ -676,18 +700,18 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c3a3evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity"> 
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c3a3sup"></p>
         </div>
-        
+
     </div>
-    
-    
-    
-    
+
+
+
+
      <div onclick="getInd('c4a1');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>  
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C4A1</p><br>
@@ -699,14 +723,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c4a1evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">  
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c4a1sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c4a2');" class="w3-cell-row">
         <div class="w3-container caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p>C4 Actividades</p> 
+            <p>C4 Actividades</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C4A2</p><br>
@@ -718,14 +742,14 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c4a2evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">    
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                 <p data-code="c4a2sup"></p>
         </div>
-        
+
     </div>
     <div onclick="getInd('c4a3');" class="w3-cell-row">
         <div class="w3-container  caran-amarillo-xxh w3-cell w3-cell-middle w3-mobile boxIndLevel">
-            <p class="caran-text-amarillo-xxh">CARAN</p>   
+            <p class="caran-text-amarillo-xxh">CARAN</p>
         </div>
         <div class="w3-container caran-amarillo-xh w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
             <p class="caran-text-naranja">C4A3</p><br>
@@ -737,23 +761,23 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-container caran-amarillo-m w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                  <p data-code="c4a3evi"></p>
         </div>
-        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">   
+        <div class="w3-container caran-amarillo-l w3-cell w3-mobile boxInd boxWrapper w3-hover-opacity">
                <p data-code="c4a3sup"></p>
         </div>
-        
+
     </div>
-    
-    
+
+
 </section>
 <!--<section class="divMiddle w3-container w3-large">
     <div class="w3-cell-row w3-orange">
         <div class="w3-container w3-cell w3-cell-middle w3-mobile">
-            <p class="w3-hover-text-grey">Primer nivel</p>  
+            <p class="w3-hover-text-grey">Primer nivel</p>
         </div>
         <div class="w3-container w3-cell w3-cell-middle w3-mobile">
             <div class="w3-cell-row">
                 <div class="w3-container w3-red w3-cell w3-cell-middle w3-mobile">
-                    <p class="w3-hover-text-grey">Fin</p>  
+                    <p class="w3-hover-text-grey">Fin</p>
                 </div>
                 <div class="w3-container w3-blue w3-cell w3-mobile">
                     <p class="w3-hover-text-grey">Indicador fin</p>
@@ -761,7 +785,7 @@ if(!isset($_SESSION['lgn']))
             </div>
             <div class="w3-cell-row">
                 <div class="w3-container w3-red w3-cell w3-cell-middle w3-mobile">
-                    <p class="w3-hover-text-grey">Problema</p>  
+                    <p class="w3-hover-text-grey">Problema</p>
                 </div>
                 <div class="w3-container w3-blue w3-cell w3-mobile">
                     <p class="w3-hover-text-grey">Indicador problema</p>
@@ -769,7 +793,7 @@ if(!isset($_SESSION['lgn']))
             </div>
             <div class="w3-cell-row">
                 <div class="w3-container w3-red w3-cell w3-cell-middle w3-mobile">
-                    <p class="w3-hover-text-grey">Componente 1</p>  
+                    <p class="w3-hover-text-grey">Bienes o Servicios</p>
                 </div>
                 <div class="w3-container w3-blue w3-cell w3-mobile">
                     <p class="w3-hover-text-grey">C1I1</p>
@@ -779,7 +803,7 @@ if(!isset($_SESSION['lgn']))
             </div>
             <div class="w3-cell-row">
                 <div class="w3-container w3-red w3-cell w3-cell-middle w3-mobile">
-                    <p class="w3-hover-text-grey">Componente 2</p>  
+                    <p class="w3-hover-text-grey">Bienes o Servicios</p>
                 </div>
                 <div class="w3-container w3-blue w3-cell w3-mobile">
                     <p class="w3-hover-text-grey">C2I1</p>

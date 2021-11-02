@@ -10,6 +10,6 @@ if (ini_get("session.use_cookies")) {
 
 session_destroy();
 
-header('Location: https://www.caransoluciones.com.mx/');
+header('Location: https://caran.com.mx/');
 
 ?>

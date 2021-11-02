@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -29,31 +29,31 @@ if(!isset($_SESSION['lgn']))
             objImageGallery = new jsImageGallery();
             objResources.setHTML('<?php echo($_SESSION['spr']); ?>','<?php echo($_GET['token']); ?>','<?php echo($_SESSION['nme']); ?>',$('#divHeader'),$('#divFooter'), $('#divBreadcrumbs'), JSON.stringify([{'s':'home.php', 'n': 'inicio'},{'s':'#', 'n': 'análisis de datos'},{'s':'#', 'n': 'ficha de avance'}]));
             getProjects();
-            
+
         });
-    
+
     function getProjects()
     {
         $.post('../business/bsnsTrees.php',{iC:1},function(f){
                 objResources.ComboPopulate($('#cobProj'),f);
             });
-                
+
     }
-    
+
     function getInd(id)
     {
         $.post('../business/bsnsKardex.php',{iC:1, arg1:id},function(f){
                 objResources.ComboPopulate($('#cobInd'),f);
             });
-                
+
     }
-    
+
     function getDataKardex(id)
     {
         $('#idProj').val(id);
         getInd(id);
     }
-    
+
     function getFiles(id, ind)
     {
         $.post('../business/bsnsKardex.php',{iC:2, arg1:id, arg2: ind}, function(f){
@@ -70,12 +70,12 @@ if(!isset($_SESSION['lgn']))
 </script>
 <header class="w3-top">
     <div id="divHeader"></div>
-    
+
 </header>
 </section>
 <section class="w3-container" style="height: 100px;"></section>
 <section class="w3-center">
-    <select id="cobProj" class="w3-select" style="width: 60%;" onchange="getDataKardex(this.value);" name="option"></select> 
+    <select id="cobProj" class="w3-select" style="width: 60%;" onchange="getDataKardex(this.value);" name="option"></select>
     <br>
     <br>
     <label id="lblProj" class="w3-large">Ficha técnica</label>
@@ -86,7 +86,7 @@ if(!isset($_SESSION['lgn']))
         <div class="w3-quarter w3-container"></div>
         <div class="w3-half w3-container">
     <form action="../business/UploadFile.php" method="post" enctype="multipart/form-data" >
-            
+
             <input type="hidden" name="arg5" value="1" />
             <input type="hidden" name="arg0" id="idProj" />
             <input type="hidden" name="arg4" value="Que tal estimado asesor, por favor verifica dentro de PLEV, ya que ha habido mucha actividad los ultimos minutos por parte de <?php echo($_SESSION['nme']); ?>. " />
@@ -106,10 +106,10 @@ if(!isset($_SESSION['lgn']))
             <input class="w3-input w3-large" type="text" name="arg2" id="arg2" maxlength="1000" required />
             <label for="arg2">Describe tu actividad <span class="w3-text-red"><strong>&#9873;</strong></span></label>
             </div>
-           
-            
+
+
             <div class="w3-pading-32 w3-panel">
-           
+
             <!--<input class="w3-input w3-large" type="file" multiple name="fileToUpload[]" accept=".png,.jpeg,.jpg,.PNG,.JPEG,.JPG,.pdf,.PDF" />-->
             <div class="w3-section">
                 <!--<label>Solo evidencias gráficas (.png y .jpg) o documentos portables (.pdf) de hasta 5MB</label>-->

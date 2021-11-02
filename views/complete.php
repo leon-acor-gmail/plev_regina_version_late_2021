@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -28,22 +28,22 @@ if(!isset($_SESSION['lgn']))
             objResources = new jsResources();
             objResources.setHTML('<?php echo($_SESSION['spr']); ?>','<?php echo($_GET['token']); ?>','<?php echo($_SESSION['nme']); ?>',$('#divHeader'),$('#divFooter'), $('#divBreadcrumbs'), JSON.stringify([{'s':'home.php', 'n': 'inicio'},{'s':'#', 'n': 'reportes'},{'s':'#', 'n': 'extenso'}]));
             getProjects();
-            
-       
-    
+
+
+
     $('#cobProj').change(function(){
                 $.post('../business/bsnsComplete.php',{iC:2, arg1:$('#cobProj').val()},function(f){
                     objResources.ListEviCompletePopulate($('#divEviComplete'),f);
                 });
             });
-    
+
      });
-    
+
     function getProjects()
     {
         $.post('../business/bsnsTrees.php',{iC:1},function(f){
                 objResources.ComboPopulate($('#cobProj'),f);
-                
+
             });
     }
     function initMap() {
@@ -70,7 +70,7 @@ if(!isset($_SESSION['lgn']))
             });*/
             return map;
       }
-      
+
     function setAddr(map, addr)
     {
         var js = JSON.parse(addr);
@@ -79,7 +79,7 @@ if(!isset($_SESSION['lgn']))
             var pos = js[i].mkr.toString().replace('(','').replace(')','');
             geocodeLatLng(map, pos);
         }
-        
+
         var latlngStr = js[0].mkr.toString().replace('(','').replace(')','').split(',', 2);
         map.setCenter({lat:parseFloat(latlngStr[0]),lng:parseFloat(latlngStr[1])});
     }
@@ -90,17 +90,17 @@ if(!isset($_SESSION['lgn']))
         var infowindow = new google.maps.InfoWindow();
         var latlngStr = input.split(',', 2);
         var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
-        
+
         geocoder.geocode({'location': latlng}, function(results, status) {
           if (status === 'OK') {
             if (results[0]) {
-           
+
                 var marker = new google.maps.Marker({
                   position: latlng,
                   map: map,
                   id: '_id'+input
                 });
-            
+
                 arrMarkers.push({ml: marker});
                 arrPos.push({id: '_id'+input, mkr: marker.getPosition().toString(), lat:marker.getPosition().lat().toString(),lng:marker.getPosition().lng().toString(),addr:results[0].formatted_address});
                 /*marker.addListener('dblclick',function(){
@@ -120,9 +120,9 @@ if(!isset($_SESSION['lgn']))
             window.alert('Falla de conexión:: ' + status);
           }
         });
-       
+
       }
-      
+
       /*function unsetMarker(mkr, mp)
       {
        var d = ((mkr).toString().replace('(','').replace(')','')).split(',');
@@ -135,7 +135,7 @@ if(!isset($_SESSION['lgn']))
                 marker.setMap(null);
                 arrMarkers.splice(i,1);
                 arrPos.splice(arrPos.indexOf(h.toString()),1);
-            }  
+            }
         }
      }*/
 </script>
@@ -145,7 +145,7 @@ if(!isset($_SESSION['lgn']))
 </section>
 <section class="w3-container" style="height: 100px;"></section>
 <section class="w3-center">
-    <select id="cobProj" class="w3-select" style="width: 60%;"  name="option"></select> 
+    <select id="cobProj" class="w3-select" style="width: 60%;"  name="option"></select>
     <br><br><br>
 </section>
 <section>

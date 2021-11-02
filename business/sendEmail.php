@@ -9,7 +9,7 @@ $message = '<!DOCTYPE html><html><head></head><body><p>'.$ser.'</p></body></html
 
 
 //$message = '<html><head><meta charset="UTF-8"/></head><body><p>'.hash('ripemd160',date("Ymd_His")).' --- '.$_GET['msg'].'</p><br><br><br><p>Atentamente: CARAN Soluciones Estratégicas SC</p></body></html>';
-//$message = '<html><head></head><body><p>'.hash('ripemd160',date("Ymd_His")).' --- '.$_GET['msg'].'</p><p>Atentamente: CARAN Soluciones Estrategicas SC</p><br><br><br><a href=\'https://www.caransoluciones.com.mx/\'>sitio web</a><br><br><a href=\'https://www.dees.mx/caram/\'>CARAN PLEV</a></body></hmtl>';
+//$message = '<html><head></head><body><p>'.hash('ripemd160',date("Ymd_His")).' --- '.$_GET['msg'].'</p><p>Atentamente: CARAN Soluciones Estrategicas SC</p><br><br><br><a href=\'https://caran.com.mx/\'>sitio web</a><br><br><a href=\'https://www.dees.mx/caram/\'>CARAN PLEV</a></body></hmtl>';
 /*$message = '
 <html>
 <head>
@@ -25,7 +25,7 @@ $message = '<!DOCTYPE html><html><head></head><body><p>'.$ser.'</p></body></html
   <br>
   <br>
   <br>
-  <a href=\'https://www.caransoluciones.com.mx/\'>sitio web</a><br><br><a href=\'https://www.dees.mx/caram/\'>CARAN PLEV</a>
+  <a href=\'https://caran.com.mx/\'>sitio web</a><br><br><a href=\'https://www.dees.mx/caram/\'>CARAN PLEV</a>
 </body>
 </html>
 ';*/

@@ -2,7 +2,7 @@
 session_start();
 if(!isset($_SESSION['lgn']))
 {
-    header('Location: https://www.caransoluciones.com.mx/');
+    header('Location: https://caran.com.mx/');
 }
 ?>
 <!DOCTYPE html>
@@ -32,8 +32,8 @@ if(!isset($_SESSION['lgn']))
     var objImageGallery = null;
     $(document).ready(function(){
             objGraph = new jsGraphs();
-            
-            
+
+
             objResources = new jsResources();
             objResources.setHTML('<?php echo($_SESSION['spr']); ?>','<?php echo($_GET['token']); ?>','<?php echo($_SESSION['nme']); ?>',$('#divHeader'),$('#divFooter'), $('#divBreadcrumbs'), JSON.stringify([{'s':'home.php', 'n': 'inicio'},{'s':'#', 'n': 'análisis de datos'},{'s':'#', 'n': 'revisión de información'}]));
             getProjects();
@@ -41,44 +41,44 @@ if(!isset($_SESSION['lgn']))
             var span1 = document.getElementsByClassName("close")[0];
             var modal1 = document.getElementById('myModal1');
             span1.onclick = function() {
-                
+
                 modal1.style.display = "none";
             };
             window.onclick = function(event) {
-                
+
                 if (event.target == modal1) {
                     modal1.style.display = "none";
                 }
             };
-            
+
             var span2 = document.getElementsByClassName("close")[1];
             var modal2 = document.getElementById('myModal2');
             span2.onclick = function() {
-                
+
                 modal2.style.display = "none";
             };
             window.onclick = function(event) {
-                
+
                 if (event.target == modal2) {
                     modal2.style.display = "none";
                 }
             };
-            
+
             $('#cobProj').change(function(){
-                
+
                 $.post('../business/bsnsReview.php',{iC:1, arg1:$('#cobProj').val()},function(f){
                         setDataUpload(f);
                     });
             });
         });
-    
+
     function getProjects()
     {
         $.post('../business/bsnsTrees.php',{iC:1},function(f){
                 objResources.ComboPopulate($('#cobProj'),f);
             });
     }
-    
+
     function setDataUpload(json)
     {
         //alert(json);
@@ -92,25 +92,25 @@ if(!isset($_SESSION['lgn']))
             alert('Aun no tienes evidencias que revisar ...');
         }
     }
-    
+
     function SaveModule(hash, data)
     {
-        
+
         $.post('../business/bsnsReview.php',{iC:2, arg1: hash, arg2: data},function(){
                 $('#lbl_'+hash).text(data);
                 var modal = document.getElementById('myModal1');
                 modal.style.display = "none";
-                
+
                 $.post('../business/bsnsReview.php',{iC:1, arg1:$('#cobProj').val()},function(f){
                         setDataUpload(f);
                     });
-                
+
         });
-        
+
     }
     function myModalCall2(x, y, z, a, b)
     {
-  
+
         if($('#cobProj').val() !== '0' && $('#cobProj').val() !== null)
         {
             var modal = document.getElementById('myModal2');
@@ -132,16 +132,16 @@ if(!isset($_SESSION['lgn']))
                                 $('#lbl8').text(arr[0].L13);
                             }
                         }
-                        
+
                     });
         }
         else
         {
             alert('Elige un proyecto...');
         }
-        
+
     }
-    
+
     function myModalCall1(x)
     {
         if($('#cobProj').val() !== '0' && $('#cobProj').val() !== null && '<?php echo($_SESSION['pfl']); ?>' == '2')
@@ -150,16 +150,16 @@ if(!isset($_SESSION['lgn']))
             $('#txtData').val('');
             var modal = document.getElementById('myModal1');
             modal.style.display = "block";
-            
+
             $('#txtData').focus();
         }
         else
         {
             alert('Solo es que tu asesor puede hacer comentarios ...');
         }
-        
+
     }
-    
+
 </script>
 <header class="w3-top">
     <div id="divHeader"></div>
@@ -167,7 +167,7 @@ if(!isset($_SESSION['lgn']))
 <section>
     <div id="myModal1" class="modal">
     <div class="modal-content">
-       
+
         <div class="modal-header">
             <span class="close">&times;</span>
         </div>
@@ -183,7 +183,7 @@ if(!isset($_SESSION['lgn']))
           <button onclick="SaveModule($('#txtHash').text(), $('#txtData').val());"  class="w3-button w3-indigo">Guardar...</button>
           <p class="w3-text-red"><span><strong>&#9873;</strong></span> Información obligatoria</p>
         </div>
-        
+
     </div>
     </div>
 </section>
@@ -191,7 +191,7 @@ if(!isset($_SESSION['lgn']))
 <section>
     <div id="myModal2" class="modal">
     <div class="modal-content">
-       
+
         <div class="modal-header">
             <span class="close">&times;</span>
         </div>
@@ -241,7 +241,7 @@ if(!isset($_SESSION['lgn']))
                     <p><span id="lbl8" class="w3-text-indigo w3-large"></span></p>
                     <p>Dimensión</p>
                 </div>
-                
+
             </div>
             <hr>
             <div class="w3-row w3-container">
@@ -251,13 +251,13 @@ if(!isset($_SESSION['lgn']))
         <div class="modal-footer">
           <!--<button onclick="SaveModule($('#txtHash').text(), $('#txtData').val());"  class="w3-button w3-indigo">Guardar...</button>-->
         </div>
-        
+
     </div>
     </div>
 </section>
 <section class="w3-container" style="height: 100px;"></section>
 <section class="w3-center">
-    <select id="cobProj" class="w3-select" style="width: 60%;"  name="option"></select> 
+    <select id="cobProj" class="w3-select" style="width: 60%;"  name="option"></select>
     <br>
     <label id="lblProj" class="w3-large">Revisión de información</label>
 </section>
