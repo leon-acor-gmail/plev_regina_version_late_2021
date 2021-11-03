@@ -287,7 +287,7 @@ if(!isset($_SESSION['lgn']))
 
                   -->
                   <div class="w3-panel">
-                    <p>Ingresa el presupuesto cada uno de los capítulos</p>
+                    <p>Ingresa el presupuesto de cada uno de los capítulos</p>
                     <input id="iBudget1" onchange="getBudget();" type="number" value="0" style="width:100%;">
                         <select id="arg13" class="w3-select">
                             <option value="0" disabled selected>Elige un capítulo de presupuesto <span class="w3-text-red"><strong>&#9873;</strong></span></option>

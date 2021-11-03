@@ -70,7 +70,7 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'<i class="fas fa-chart-pie fa-lg"></i> Reportes'+
 		'</div>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-azul w3-card-4">'+
-		/*'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+*/
+		'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+
 		'<a href="../views/report.php?token='+token+'" class="w3-bar-item w3-button">Ejecutivo</a>'+
 		'</div>'+
 		'</div>'+
@@ -146,7 +146,7 @@ jsResources.prototype.setHTML = function(pfl, token, user, domHeader, domFooter,
 		'<div class="w3-dropdown-hover">'+
 		'<button class="w3-button caran-hover-azul">Reportes</button>'+
 		'<div class="w3-dropdown-content w3-bar-block caran-hover-azul w3-card-4">'+
-		/*'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+*/
+		'<a href="../views/complete.php?token='+token+'" class="w3-bar-item w3-button">Extenso</a>'+
 		'<a href="../views/report.php?token='+token+'" class="w3-bar-item w3-button">Ejecutivo</a>'+
 		'<!--<a class="w3-bar-item w3-button">Indicadores</a>-->'+
 		'</div>'+
@@ -299,7 +299,8 @@ jsResources.prototype.ComboPopulate = function(domComponent, strJson)
 		var items = [];
 		items.push('<option value="0" disabled selected>Elige una opción</option>');
 		$.each(jQuery.parseJSON(strJson), function() {
-			items.push('<option value="' + this.code +'">' + this.data + ' - ' + this.b6 + ' - '+ this.code + '</option>');
+			items.push('<option value="' + this.code +'">' + this.data + ' - ' + this.b6 + '</option>');
+			//items.push('<option value="' + this.code +'">' + this.data + ' - ' + this.b6 + ' - '+ this.code + '</option>');
 		});
 		domComponent.append( items.join('') );
 	};

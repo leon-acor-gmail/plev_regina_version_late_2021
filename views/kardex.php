@@ -113,7 +113,7 @@ if(!isset($_SESSION['lgn']))
             <!--<input class="w3-input w3-large" type="file" multiple name="fileToUpload[]" accept=".png,.jpeg,.jpg,.PNG,.JPEG,.JPG,.pdf,.PDF" />-->
             <div class="w3-section">
                 <!--<label>Solo evidencias gráficas (.png y .jpg) o documentos portables (.pdf) de hasta 5MB</label>-->
-                <label>La evidencias se entregan bajo las especificaciones indicadas por tu asesor de proyecto.</label>
+                <label>La evidencias se entregan bajo las especificaciones indicadas por tu asesor de proyecto. <b>[Archivos con un tamaño máximo de 2MB]</b></label>
                 <div class="tooltip">
                     <i class="fas fa-info fa-2x w3-margin-left w3-text-red w3-hover-opacity"></i>
                     <span class="tooltiptext">puedes elegir mas de un archivo a la vez... </span>
